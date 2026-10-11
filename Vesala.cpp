@@ -21,6 +21,31 @@ int main(int argc, char** argv)
     std::uniform_int_distribution<size_t> dist(0, reci.size() - 1);
     size_t index = dist(gen);
 
+    // Inicijalizacija
+    Inicijalizacija();
+    std::string rec=reci.at(index);
+    Igra ig(rec);
+    char slovo;
+    while(true)
+    {
+        ig.Print();
+        std::cout<<"Please type in your next letter:";
+        std::cin>>slovo;
+        ig.Runda(slovo);
+        if(ig.pobeda)
+        {
+            ig.Print();
+            std::cout<<"Congratulations! You won! Heres a gold star ☆"<<std::endl;
+            break;
+        };
+        if(ig.poraz)
+        {
+            ig.Print();
+            std::cout<<"Oh no! You lost! Better luck next time!"<<std::endl;
+            break;
+        }
+
+    };  
     
 
 
